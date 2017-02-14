@@ -3,7 +3,8 @@
 echo .
 echo .
 echo _____ Start _____
-::if exist C:\Users\uw\Lisberg\Clients\Coolrunner\upload\*.csv (goto UPLOADFILES) else (goto NOFILES)
+if "%~1"=="" goto NOPASSWORD
+set "password=%1"
 if exist .\upload\*.csv (goto UPLOADFILES) else (goto NOFILES)
 
 
@@ -13,7 +14,7 @@ echo .
 echo .
 echo _____ Upload files _____
 set "name=lisbergd6089"
-set "password=pmtsvmy3xv9mtf06"
+::set "password=xxxxx"
 set "server=ftp02.coolrunner.dk"
 ping %server% |find /i "TTL=" >nul || (echo server offline, aborting&pause&goto :EOF)
 if exist .\ftpUploadScript.txt del /F /Q .\ftpUploadScript.txt
@@ -79,9 +80,11 @@ echo _____ Printing files _____
 ::goto LOOP
 goto DONOTHING
 
+
 :NOFILES
 ::==============
 goto LOOP
+
 
 :LOOP
 ::==============
@@ -91,7 +94,14 @@ timeout /t 20
 ::ping 127.0.0.1 -n 300 > nul
 goto START
 
+
+:NOPASSWORD
+::===============
+echo No password specified.
+
+
 :DONOTHING
+::===============
 
 
 :: Direct path to printer
