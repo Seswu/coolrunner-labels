@@ -30,7 +30,7 @@ if exist .\ftpUploadScript.txt del /F /Q .\ftpUploadScript.txt
 
 echo open ftp://%name%:%password%@%server%/ >> .\ftpUploadScript.txt
 echo CD "/IN" >> .\ftpUploadScript.txt
-echo mput -transfer=binary "C:\Users\uw\Lisberg\Clients\Coolrunner\upload\*.csv" >> .\ftpUploadScript.txt
+echo mput -transfer=binary ".\upload\*.csv" >> .\ftpUploadScript.txt
 echo close >> .\ftpUploadScript.txt
 echo exit >> .\ftpUploadScript.txt
 
@@ -51,7 +51,7 @@ if exist .\ftpDownloadScript.txt del /F /Q .\ftpDownloadScript.txt
 
 echo open ftp://%name%:%password%@%server%/ >> .\ftpDownloadScript.txt
 echo CD "/OUT" >> .\ftpDownloadScript.txt
-echo lcd "C:\Users\uw\Lisberg\Clients\Coolrunner\download" >> .\ftpDownloadScript.txt
+echo lcd ".\download" >> .\ftpDownloadScript.txt
 echo mget -transfer=binary "*.pdf" >> .\ftpDownloadScript.txt
 echo mget -transfer=binary "*.csv" >> .\ftpDownloadScript.txt
 echo rm "*.pdf" >> .\ftpDownloadScript.txt
